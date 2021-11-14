@@ -24,6 +24,7 @@ const FormBahan: React.FC<Props> = ({ handleSubmit }) => {
       }}
     >
       <TextField
+        rows = {1}
         sx={{
           display: "block",
           mb: 4,
@@ -43,6 +44,7 @@ const FormBahan: React.FC<Props> = ({ handleSubmit }) => {
         required
       />
       <TextField
+        rows = {1}
         sx={{
           display: "block",
           mb: 4,
@@ -62,6 +64,7 @@ const FormBahan: React.FC<Props> = ({ handleSubmit }) => {
         required
       />
       <TextField
+        rows = {1}
         sx={{
           display: "block",
           mb: 4,
