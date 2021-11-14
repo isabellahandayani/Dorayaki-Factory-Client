@@ -86,6 +86,7 @@ const ReadBahan = () => {
             mt: 2,
             borderRadius: 2,
           }}
+          onClick = {() => {window.location.href="/bahan/create"}}
         >
           Tambah
         </Button>

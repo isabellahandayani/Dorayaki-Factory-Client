@@ -26,15 +26,23 @@ const AddRecipe = () => {
   const [bahanRecipe, setBahanRecipe] = useState<Array<bahanProps>>([]);
 
   const handleSubmit = async () => {
-    if(nama !== undefined && bahanRecipe !== undefined) {
+    if (nama !== undefined && bahanRecipe !== undefined) {
       await RecipeServices.createDorayaki({ dorayaki_name: nama });
       let data = await (await RecipeServices.getAll()).data.data;
       let bahanData = await (await BahanServices.getAll()).data.data;
-      let dorayaki = await data.filter((item: any) => item.dorayaki_name === nama);
-        bahanRecipe.forEach((item: any) => {
-          RecipeServices.createRecipe({ id_dorayaki: dorayaki[0].id, id_bahan: bahanData.filter((row: any) => row.nama_bahan === item.nama_bahan)[0].id, qty: item.qty });
+      let dorayaki = await data.filter(
+        (item: any) => item.dorayaki_name === nama
+      );
+      bahanRecipe.forEach((item: any) => {
+        RecipeServices.createRecipe({
+          id_dorayaki: dorayaki[0].id,
+          id_bahan: bahanData.filter(
+            (row: any) => row.nama_bahan === item.nama_bahan
+          )[0].id,
+          qty: item.qty,
         });
-      }
+      });
+    }
   };
 
   useEffect(() => {
@@ -69,7 +77,6 @@ const AddRecipe = () => {
         console.log(e);
       });
   };
-
 
   return (
     <>
@@ -194,7 +201,7 @@ const AddRecipe = () => {
           </Box>
 
           {bahanRecipe && (
-            <TableBahan onClick={handleDelete} props={bahanRecipe}></TableBahan>
+            <TableBahan onClick={handleDelete} props={bahanRecipe} isEdit={true}></TableBahan>
           )}
 
           <Box textAlign="center">
@@ -206,7 +213,7 @@ const AddRecipe = () => {
                 borderRadius: 2,
                 display: "inline",
                 mx: "auto",
-                mt: 10
+                mt: 10,
               }}
               variant="contained"
               color="info"

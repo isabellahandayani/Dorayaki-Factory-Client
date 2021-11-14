@@ -9,11 +9,15 @@ const ReadRecipe = () => {
     initialize();
   }, []);
 
+  const handleRedirect = (id: any) => {
+    // console.log(id)
+    window.location.href = `/dorayaki/${id}`;
+  }
+
   const initialize = () => {
     RecipeServices.getAll()
       .then((response) => {
         setRecipe(response.data.data);
-        console.log(response.data.data);
       })
       .catch((e) => {
         console.log(e);
@@ -23,7 +27,7 @@ const ReadRecipe = () => {
     <>
       {recipe &&
         recipe.map((item) => {
-          return <CardResep props={item.dorayaki_name} />;
+          return <CardResep props={item.dorayaki_name} id={item.id} onClick = {handleRedirect} />;
         })}
     </>
   );

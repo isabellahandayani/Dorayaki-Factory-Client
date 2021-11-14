@@ -1,15 +1,16 @@
 import { Box, Typography } from "@mui/material/";
 
 interface Props {
-  //   onClick: (id: number) => void;
+  onClick: (id: number) => void;
   props: string;
+  id: number;
 }
 
-const CardResep: React.FC<Props> = ({ props }) => {
+const CardResep: React.FC<Props> = ({ onClick, props, id }) => {
   return (
     <Box
       bgcolor="primary.main"
-      onClick = {() => alert('clicked')}
+      onClick = {() => onClick(id)}
       sx={{
         borderRadius: 5,
         maxWidth: "90%",
