@@ -4,10 +4,9 @@ import { useState } from "react";
 
 interface Props {
   handleSubmit: (nama_bahan: string, satuan: string, stok: number) => void;
-  props: Bahan;
 }
 
-const FormBahan: React.FC<Props> = ({ handleSubmit, props }) => {
+const FormBahan: React.FC<Props> = ({ handleSubmit }) => {
   const [nama, setNama] = useState<string>("");
   const [satuan, setSatuan] = useState<string>("");
   const [stok, setStok] = useState<number>(1);

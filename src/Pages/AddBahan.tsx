@@ -25,7 +25,6 @@ const AddBahan = () => {
     <>
       <FormBahan
         handleSubmit={handleSubmit}
-        props={{ id: 0, nama_bahan: "", satuan: "", stok: 1 }}
       />
     </>
   );
