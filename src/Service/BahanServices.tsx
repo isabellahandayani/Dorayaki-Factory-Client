@@ -13,7 +13,7 @@ const update = (data: any) => {
 }
 
 const create = (data: any) => {
-    return http.post("bahan/create", data)
+    return http.post("/bahan/create", data)
 }
 
 export default {
