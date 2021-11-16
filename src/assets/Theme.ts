@@ -3,13 +3,14 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#01A8D9'
+      main: '#FFFFFF'
     },
     secondary: {
-      main: '#F19100'
+      main: '#01A8D9'
     },
     info: {
-      main: '#BA3C16'
+      main: '#F19100',
+      light: '#BA3C16'
     },
     warning: {
       main: '#F39A64'
@@ -19,7 +20,7 @@ const theme = createTheme({
     fontFamily: '"Josefin Sans", "Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
       fontSize: '144px',
-      lineHeight: '1'
+      lineHeight: '1',
     },
     h2: {
       fontSize: '96px',
@@ -34,12 +35,10 @@ const theme = createTheme({
       lineHeight: '1'
     },
     body1: {
-      fontSize: '36px',
-      lineHeight: '1'
+      fontSize: '24px'
     },
     body2: {
-      fontSize: '28px',
-      lineHeight: '1'
+      fontSize: '12px'
     },
   }
 })

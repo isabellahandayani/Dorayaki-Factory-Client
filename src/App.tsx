@@ -1,23 +1,26 @@
 import React from 'react';
+import AuthContext, { AuthProvider } from 'Context/Auth';
+import Login from 'Pages/login/Login';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <AuthContext.Consumer>
+      {({authState, }) => {
+        const {isLoggedIn, } = authState;
+        return !isLoggedIn ?
+        (
+          <div className="App">
+            <Login />
+          </div>
+        ) : (
+          <div className="App">
+          </div>
+        );
+      }}
+      </AuthContext.Consumer>
+    </AuthProvider>
   );
 }
 
