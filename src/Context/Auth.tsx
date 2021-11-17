@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from 'react';
+import React, { useState, createContext, useContext, useEffect } from 'react';
 
 interface authStateData {
   isLoggedIn: boolean;
@@ -15,14 +15,22 @@ interface props {
 }
 
 const defaultState: authStateData = {
-  isLoggedIn: false,
-  jwt: null
+  isLoggedIn: localStorage.getItem("jwt")!==null,
+  jwt: localStorage.getItem("jwt")
 }
 
 const AuthContext = createContext<authContextData>({authState: defaultState, setAuthState: () => defaultState});
 
 export const AuthProvider = ({ children }: props) => {
   const [authState, setAuthState] = useState(defaultState);
+
+  useEffect(() => {
+    if (authState.isLoggedIn && authState.jwt) {
+      localStorage.setItem("jwt", authState.jwt);
+    } else {
+      localStorage.removeItem("jwt");
+    }
+  }, [authState])
 
   return (
     <AuthContext.Provider value={{authState, setAuthState}}>

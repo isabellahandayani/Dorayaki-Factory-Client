@@ -9,6 +9,12 @@ interface Props {
 }
 
 const Navbar = ({ authState }: Props) => {
+  const logout = () => {
+    localStorage.removeItem("jwt");
+    window.location.reload();
+    window.location.pathname = "/";
+  }
+
   return (
     <AppBar
       style={{
@@ -105,7 +111,7 @@ const Navbar = ({ authState }: Props) => {
               ml: 3,
               color: "white",
             }}
-            onClick={(e) => window.location.reload()}
+            onClick={(e) => logout()}
           >
             Logout
           </Button>)}
