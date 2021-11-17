@@ -1,9 +1,22 @@
-import { Button } from "@mui/material";
+import { Button, AppBar } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+interface Props {
+  authState: {
+    isLoggedIn: boolean;
+    jwt: string | null;
+  };
+}
+
+const Navbar = ({ authState }: Props) => {
+  const logout = () => {
+    localStorage.removeItem("jwt");
+    window.location.reload();
+    window.location.pathname = "/";
+  }
+
   return (
-    <div
+    <AppBar
       style={{
         backgroundColor: "#01A8D9",
         margin: 0,
@@ -83,22 +96,13 @@ const Navbar = () => {
           >
             Bahan Baku
           </Link>
-        </p> }
-        <p
-          style={{
-            textAlign: "right",
-            color: "white",
-            fontSize: 24,
-            marginLeft: 20,
-          }}
-        >
-          Admin
-        </p>
+        </p>}
         <div
           style={{
             textAlign: "right",
           }}
         >
+          {authState.isLoggedIn && (
           <Button
             variant="contained"
             color="success"
@@ -107,13 +111,13 @@ const Navbar = () => {
               ml: 3,
               color: "white",
             }}
-            onClick={(e) => window.location.reload()}
+            onClick={(e) => logout()}
           >
             Logout
-          </Button>
+          </Button>)}
         </div>
       </div>
-    </div>
+    </AppBar>
   );
 };
 

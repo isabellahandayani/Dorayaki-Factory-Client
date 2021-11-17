@@ -1,7 +1,8 @@
 import AuthContext, { AuthProvider } from "Context/Auth";
-import ReadRecipe from "Pages/recipe/ReadRecipe";
-import Login from "Pages/login/Login";
 import { Routes, Route } from "react-router-dom";
+import Login from "Pages/login/Login";
+import Register from "Pages/register/Register";
+import ReadRecipe from "Pages/recipe/ReadRecipe";
 import ReadBahan from "Pages/bahan/ReadBahan";
 import DetailRecipe from "Pages/recipe/DetailRecipe";
 import AddRecipe from "Pages/recipe/AddRecipe";
@@ -17,15 +18,16 @@ function App() {
           const { isLoggedIn } = authState;
           return !isLoggedIn ? (
             <div className="App">
-              <Navbar />
+              <Navbar authState={authState} />
               <Routes>
-                <Route path="/" element={<Login />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
                 <Route path="*" element={<Login />} />
               </Routes>
             </div>
           ) : (
             <div className="App">
-              <Navbar />
+              <Navbar authState={authState} />
               <Routes>
                 <Route path="/dorayaki" element={<ReadRecipe />} />
                 <Route path="/bahan" element={<ReadBahan />} />
