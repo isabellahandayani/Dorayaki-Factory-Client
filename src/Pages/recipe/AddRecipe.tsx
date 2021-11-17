@@ -11,7 +11,9 @@ import {
 import { useState, useEffect } from "react";
 import RecipeServices from "Service/RecipeServices";
 import BahanServices from "Service/BahanServices";
-import TableBahan from "../Components/TableBahan";
+import TableBahan from "../../Components/TableBahan";
+import { useAuthContext } from "Context/Auth";
+import { useNavigate } from "react-router-dom";
 
 interface bahanProps {
   nama_bahan: string;
@@ -24,29 +26,50 @@ const AddRecipe = () => {
   const [selected, setSelected] = useState<any>("");
   const [qty, setQty] = useState<any>(1);
   const [bahanRecipe, setBahanRecipe] = useState<Array<bahanProps>>([]);
+  const context = useAuthContext();
+  let navigate = useNavigate();
 
   const handleSubmit = async () => {
     if (nama !== undefined && bahanRecipe !== undefined) {
-      await RecipeServices.createDorayaki({ dorayaki_name: nama });
-      let data = await (await RecipeServices.getAll()).data.data;
-      let bahanData = await (await BahanServices.getAll()).data.data;
+      await RecipeServices.createDorayaki(
+        { dorayaki_name: nama },
+        context.authState.jwt
+      );
+      let data = await (
+        await RecipeServices.getAll(context.authState.jwt)
+      ).data.data;
+      let bahanData = await (
+        await BahanServices.getAll(context.authState.jwt)
+      ).data.data;
       let dorayaki = await data.filter(
         (item: any) => item.dorayaki_name === nama
       );
       bahanRecipe.forEach((item: any) => {
-        RecipeServices.createRecipe({
-          id_dorayaki: dorayaki[0].id,
-          id_bahan: bahanData.filter(
-            (row: any) => row.nama_bahan === item.nama_bahan
-          )[0].id,
-          qty: item.qty,
-        });
+        RecipeServices.createRecipe(
+          {
+            id_dorayaki: dorayaki[0].id,
+            id_bahan: bahanData.filter(
+              (row: any) => row.nama_bahan === item.nama_bahan
+            )[0].id,
+            qty: item.qty,
+          },
+          context.authState.jwt
+        );
       });
+      navigate("/dorayaki", { replace: true });
     }
   };
 
   useEffect(() => {
     getBahan();
+    return () => {
+      setNama("");
+      setBahan([]);
+      setSelected("");
+      setQty(1);
+      setBahanRecipe([]);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleAdd = () => {
@@ -69,7 +92,7 @@ const AddRecipe = () => {
   };
 
   const getBahan = () => {
-    BahanServices.getAll()
+    BahanServices.getAll(context.authState.jwt)
       .then((response) => {
         setBahan(response.data.data);
       })
@@ -81,7 +104,7 @@ const AddRecipe = () => {
   return (
     <>
       <Box
-        bgcolor="secondary.main"
+        bgcolor="info.main"
         sx={{
           borderRadius: 5,
           maxWidth: "90%",
@@ -90,13 +113,13 @@ const AddRecipe = () => {
           p: 2,
         }}
       >
-        <Typography variant="h4" color="white">
+        <Typography align="left" variant="h4" color="white">
           Add Recipe
         </Typography>
       </Box>
       <form>
         <Box
-          bgcolor="primary.main"
+          bgcolor="warning.main"
           sx={{
             borderRadius: 5,
             maxWidth: "90%",
@@ -201,7 +224,11 @@ const AddRecipe = () => {
           </Box>
 
           {bahanRecipe && (
-            <TableBahan onClick={handleDelete} props={bahanRecipe} isEdit={true}></TableBahan>
+            <TableBahan
+              onClick={handleDelete}
+              props={bahanRecipe}
+              isEdit={true}
+            ></TableBahan>
           )}
 
           <Box textAlign="center">

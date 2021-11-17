@@ -1,24 +1,42 @@
-import http from "../http-common"
+import http from "../http-common";
 
-const get = (id: any) => {
-    return http.get(`/bahan${id}`)
-}
+const get = (id: any, jwt: any) => {
+  return http.get(`/bahan/${id}`, {
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+};
 
-const getAll = () => {
-    return http.get(`/bahan`)
-}
+const getAll = (jwt: any) => {
+  return http.get(`/bahan`, {
+      headers: {
+          Authorization: `Bearer ${jwt}`
+      }
+  });
+};
 
-const update = (data: any) => {
-    return http.put("/bahan/update", data)
-}
+const update = (data: any, jwt: any) => {
+  return http.put("/bahan/update", data, {
+      headers : {
+          Authorization: `Bearer ${jwt}`
+      }
+  });
+};
 
-const create = (data: any) => {
-    return http.post("/bahan/create", data)
-}
+const create = (data: any, jwt: any) => {
+  return http.post("/bahan/create", data, {
+      headers: {
+          Authorization: `Bearer ${jwt}`
+      }
+  });
+};
 
-export default {
-    get,
+const exportedObject = {
+    get, 
     getAll,
     update,
     create
-};
+}
+
+export default exportedObject;

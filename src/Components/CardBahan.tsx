@@ -9,7 +9,7 @@ interface Props {
 const CardBahan: React.FC<Props> = ({ onClick, props }) => {
   return (
     <Box
-      bgcolor="primary.main"
+      bgcolor="secondary.main"
       sx={{
         borderRadius: 5,
         maxWidth: "95%",
@@ -25,10 +25,10 @@ const CardBahan: React.FC<Props> = ({ onClick, props }) => {
           flex: 0.975,
         }}
       >
-        <Typography variant="body2" color="white">
+        <Typography align="left" variant="body1" color="white">
           {props.nama_bahan}
         </Typography>
-        <Typography variant="body2" color="white">
+        <Typography align="left" variant="body1" color="white">
           {props.stok} {props.satuan}
         </Typography>
       </Box>
@@ -37,13 +37,13 @@ const CardBahan: React.FC<Props> = ({ onClick, props }) => {
         textAlign="right"
         sx={{
           verticalAlign: "middle",
-          mt: 1.5,
+          mt: 3,
         }}
       >
         <Button
           sx={{ color: "white", width: 100, fontSize: 28, borderRadius: 2 }}
           variant="contained"
-          color="secondary"
+          color="info"
           onClick={() => onClick(props.id)}
         >
           Edit

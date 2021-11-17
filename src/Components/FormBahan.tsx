@@ -1,5 +1,4 @@
 import { Box, TextField, Button } from "@mui/material";
-import Bahan from "Model/Bahan";
 import { useState } from "react";
 
 interface Props {
@@ -13,7 +12,7 @@ const FormBahan: React.FC<Props> = ({ handleSubmit }) => {
 
   return (
     <Box
-      bgcolor="primary.main"
+      bgcolor="secondary.main"
       sx={{
         borderRadius: 2,
         p: 2,
@@ -87,7 +86,7 @@ const FormBahan: React.FC<Props> = ({ handleSubmit }) => {
         <Button
           sx={{ color: "white", width: 200, fontSize: 28, borderRadius: 2 }}
           variant="contained"
-          color="info"
+          color="success"
           onClick={() => handleSubmit(nama, satuan, stok)}
         >
           Konfirmasi

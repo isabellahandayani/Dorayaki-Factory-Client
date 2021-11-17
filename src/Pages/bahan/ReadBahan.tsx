@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 
-import BahanService from "../Service/BahanServices";
-import CardBahan from "../Components/CardBahan";
-import FormBahan from "../Components/FormBahan";
+import BahanService from "../../Service/BahanServices";
+import CardBahan from "../../Components/CardBahan";
+import FormBahan from "../../Components/FormBahan";
 
 import { Button, Box, Modal } from "@mui/material";
-import BahanServices from "../Service/BahanServices";
+import BahanServices from "../../Service/BahanServices";
+import { useAuthContext } from "Context/Auth";
+import { useNavigate } from "react-router-dom";
 
 const ReadBahan = () => {
   const [bahan, setBahan] = useState<any[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [id, setId] = useState<number>();
+  const context = useAuthContext();
+  let navigate = useNavigate();
 
   const handleOpen = (id: number) => {
     setId(id);
@@ -28,12 +32,16 @@ const ReadBahan = () => {
       satuan: satuan,
       stok: stok,
     };
-    update(data);
+
+    if(nama_bahan && satuan && stok){
+      update(data);
+    }
+    navigate("/bahan", { replace: true });
     handleClose();
   };
 
   const update = (data: any) => {
-    BahanServices.update(data)
+    BahanServices.update(data, context.authState.jwt)
       .then((response) => {
         console.log(response);
       })
@@ -44,11 +52,11 @@ const ReadBahan = () => {
 
   useEffect(() => {
     initialize();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const initialize = () => {
-    console.log("MSK");
-    BahanService.getAll()
+    BahanService.getAll(context.authState.jwt)
       .then((response) => {
         setBahan(response.data.data);
       })
@@ -77,7 +85,7 @@ const ReadBahan = () => {
       <Box textAlign="center">
         <Button
           variant="contained"
-          color="info"
+          color="success"
           sx={{
             width: "95%",
             mb: 4,
@@ -86,7 +94,9 @@ const ReadBahan = () => {
             mt: 2,
             borderRadius: 2,
           }}
-          onClick = {() => {window.location.href="/bahan/create"}}
+          onClick={() => {
+            navigate("/bahan/create", { replace: true });
+          }}
         >
           Tambah
         </Button>
@@ -100,9 +110,7 @@ const ReadBahan = () => {
             open={isOpen}
             onClose={handleClose}
           >
-            <>
-              <FormBahan handleSubmit={handleSubmit} />
-            </>
+            <FormBahan handleSubmit={handleSubmit} />
           </Modal>
         </>
       )}

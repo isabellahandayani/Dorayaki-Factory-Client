@@ -3,15 +3,18 @@ import { Box, Typography } from "@mui/material";
 import RecipeServices from "Service/RecipeServices";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useAuthContext } from "Context/Auth";
 
 const DetailRecipe = () => {
   const { id } = useParams();
   const [dorayaki, setDorayaki] = useState<any>([]);
+  const context = useAuthContext();
 
   const getDorayaki = () => {
-    RecipeServices.get(id)
+    RecipeServices.get(id, context.authState.jwt)
       .then((response) => {
         setDorayaki(response.data.data);
+        console.log(dorayaki)
       })
       .catch((e) => {
         console.log(e);
@@ -24,10 +27,10 @@ const DetailRecipe = () => {
 
   return (
     <>
-      {dorayaki[0] !== undefined  && (
+      {dorayaki[0] !== undefined && (
         <>
           <Box
-            bgcolor="secondary.main"
+            bgcolor="info.main"
             sx={{
               borderRadius: 5,
               maxWidth: "90%",
@@ -36,20 +39,20 @@ const DetailRecipe = () => {
               p: 2,
             }}
           >
-            <Typography style={{ color: "white" }}>
-              { dorayaki[0].dorayaki_name }
+            <Typography align="left" style={{ color: "white" }} variant="h4">
+              {dorayaki[0].dorayaki_name}
             </Typography>
           </Box>
 
           <Box
-            bgcolor="primary.main"
+            bgcolor="secondary.main"
             sx={{
               borderRadius: 5,
               maxWidth: "90%",
               mx: "auto",
               mt: 4,
               p: 2,
-              minHeight: 500
+              minHeight: 500,
             }}
           >
             <Box
@@ -59,7 +62,7 @@ const DetailRecipe = () => {
                 mt: 2,
               }}
             >
-              <Typography style={{ color: "white", maxWidth: "90%" }}>
+              <Typography align="left" variant="body1" style={{ color: "white", maxWidth: "90%" }}>
                 Daftar Bahan
               </Typography>
             </Box>

@@ -9,6 +9,8 @@ import {
 } from "@mui/material";
 
 const TableBahan: React.FC<any> = ({ onClick, props, isEdit }) => {
+
+
   return (
     <TableContainer
       sx={{
@@ -17,19 +19,32 @@ const TableBahan: React.FC<any> = ({ onClick, props, isEdit }) => {
         mt: 2,
       }}
     >
-      <Table sx={{ minWidth: 650}} aria-label="simple table">
+      <Table sx={{ minWidth: 650
+       }} aria-label="simple table">
         <TableHead>
-          <TableRow style={{ color: "white" }}>
-            <TableCell>Nama Bahan</TableCell>
-            <TableCell align="right">Qty</TableCell>
+          <TableRow style={{ color: "white"  }}>
+            <TableCell style={{
+              color: "white",
+              fontSize: 28
+            }}>Nama Bahan</TableCell>
+            <TableCell style={{
+              color:"white",
+              fontSize: 28
+            }}align="right">Qty</TableCell>
             {isEdit && <TableCell align="right">Delete</TableCell>}
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody> 
           {props.map((row: any) => (
             <TableRow key={row.nama_bahan}>
-              <TableCell>{row.nama_bahan}</TableCell>
-              <TableCell align="right">{row.qty}</TableCell>
+              <TableCell style= {{
+                color:"white",
+                fontSize: 28
+              }}>{row.nama_bahan}</TableCell>
+              <TableCell align="right" style={{
+                color:"white",
+                fontSize: 28
+              }}>{row.qty}</TableCell>
               {isEdit && (
                 <TableCell align="right">
                   <Button

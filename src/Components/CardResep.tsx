@@ -9,7 +9,7 @@ interface Props {
 const CardResep: React.FC<Props> = ({ onClick, props, id }) => {
   return (
     <Box
-      bgcolor="primary.main"
+      bgcolor="secondary.main"
       onClick = {() => onClick(id)}
       sx={{
         borderRadius: 5,
@@ -19,7 +19,7 @@ const CardResep: React.FC<Props> = ({ onClick, props, id }) => {
         p: 4,
       }}
     >
-      <Typography variant="body2" color="white">
+      <Typography align="left" variant="h4" color="white">
         {props}
       </Typography>
     </Box>
