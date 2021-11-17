@@ -30,7 +30,7 @@ const AddRecipe = () => {
   let navigate = useNavigate();
 
   const handleSubmit = async () => {
-    if (nama !== undefined && bahanRecipe !== undefined) {
+    if (nama && bahanRecipe.length > 0) {
       await RecipeServices.createDorayaki(
         { dorayaki_name: nama },
         context.authState.jwt
@@ -119,7 +119,7 @@ const AddRecipe = () => {
       </Box>
       <form>
         <Box
-          bgcolor="warning.main"
+          bgcolor="secondary.main"
           sx={{
             borderRadius: 5,
             maxWidth: "90%",
@@ -216,7 +216,7 @@ const AddRecipe = () => {
                 mt: 1,
               }}
               variant="contained"
-              color="secondary"
+              color="info"
               onClick={() => handleAdd()}
             >
               Tambah
@@ -243,7 +243,7 @@ const AddRecipe = () => {
                 mt: 10,
               }}
               variant="contained"
-              color="info"
+              color="success"
               onClick={() => handleSubmit()}
             >
               Konfirmasi

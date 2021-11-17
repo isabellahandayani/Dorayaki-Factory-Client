@@ -25,13 +25,16 @@ const TableBahan: React.FC<any> = ({ onClick, props, isEdit }) => {
           <TableRow style={{ color: "white"  }}>
             <TableCell style={{
               color: "white",
-              fontSize: 28
+              fontSize: 24
             }}>Nama Bahan</TableCell>
             <TableCell style={{
               color:"white",
-              fontSize: 28
+              fontSize: 24
             }}align="right">Qty</TableCell>
-            {isEdit && <TableCell align="right">Delete</TableCell>}
+            {isEdit && <TableCell align="right" style={{
+              color:"white",
+              fontSize: 24
+            }}>Delete</TableCell>}
           </TableRow>
         </TableHead>
         <TableBody> 
@@ -39,14 +42,17 @@ const TableBahan: React.FC<any> = ({ onClick, props, isEdit }) => {
             <TableRow key={row.nama_bahan}>
               <TableCell style= {{
                 color:"white",
-                fontSize: 28
+                fontSize: 24
               }}>{row.nama_bahan}</TableCell>
               <TableCell align="right" style={{
                 color:"white",
-                fontSize: 28
+                fontSize: 24
               }}>{row.qty}</TableCell>
               {isEdit && (
-                <TableCell align="right">
+                <TableCell align="right" style={{
+                  color:'white',
+                  fontSize: 24
+                }}>
                   <Button
                     sx={{
                       color: "white",
@@ -58,7 +64,7 @@ const TableBahan: React.FC<any> = ({ onClick, props, isEdit }) => {
                       mt: 1,
                     }}
                     variant="contained"
-                    color="secondary"
+                    color="info"
                     onClick={() => onClick(row.nama_bahan)}
                   >
                     Hapus
