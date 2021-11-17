@@ -59,6 +59,7 @@ const ReadBahan = () => {
     BahanService.getAll(context.authState.jwt)
       .then((response) => {
         setBahan(response.data.data);
+        console.log(response.data.data)
       })
       .catch((e) => {
         console.log(e);
@@ -67,6 +68,11 @@ const ReadBahan = () => {
 
   return (
     <>
+      <Box sx={{
+        mt:15
+      }}>
+
+      </Box>
       {bahan &&
         bahan.map((item) => {
           return (

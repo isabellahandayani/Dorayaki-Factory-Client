@@ -13,7 +13,10 @@ const AddBahan = () => {
       satuan: satuan,
       stok: stok,
     };
-    create(data);
+
+    if(nama_bahan && satuan && stok) {
+      create(data);
+    }
     navigate("/bahan", { replace: true });
   };
 

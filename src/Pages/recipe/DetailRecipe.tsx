@@ -14,7 +14,7 @@ const DetailRecipe = () => {
     RecipeServices.get(id, context.authState.jwt)
       .then((response) => {
         setDorayaki(response.data.data);
-        console.log(dorayaki)
+        console.log(dorayaki);
       })
       .catch((e) => {
         console.log(e);
@@ -27,6 +27,11 @@ const DetailRecipe = () => {
 
   return (
     <>
+      <Box
+        sx={{
+          mt: 15,
+        }}
+      ></Box>
       {dorayaki[0] !== undefined && (
         <>
           <Box
@@ -62,7 +67,11 @@ const DetailRecipe = () => {
                 mt: 2,
               }}
             >
-              <Typography align="left" variant="body1" style={{ color: "white", maxWidth: "90%" }}>
+              <Typography
+                align="left"
+                variant="body1"
+                style={{ color: "white", maxWidth: "90%" }}
+              >
                 Daftar Bahan
               </Typography>
             </Box>

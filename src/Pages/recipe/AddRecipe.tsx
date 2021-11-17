@@ -109,7 +109,7 @@ const AddRecipe = () => {
           borderRadius: 5,
           maxWidth: "90%",
           mx: "auto",
-          mt: 4,
+          mt: 15,
           p: 2,
         }}
       >
@@ -208,12 +208,11 @@ const AddRecipe = () => {
             <Button
               sx={{
                 color: "white",
-                width: 200,
+                width: 150,
                 fontSize: 24,
                 borderRadius: 2,
                 display: "inline",
-                ml: 5,
-                mt: 1,
+                ml: 10,
               }}
               variant="contained"
               color="info"

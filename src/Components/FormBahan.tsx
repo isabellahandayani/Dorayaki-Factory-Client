@@ -18,7 +18,7 @@ const FormBahan: React.FC<Props> = ({ handleSubmit }) => {
         p: 2,
         maxWidth: "35%",
         m: "auto",
-        marginTop: 15,
+        marginTop: 25,
         height: 400,
       }}
     >

@@ -13,7 +13,7 @@ const Navbar = ({ authState }: Props) => {
     localStorage.removeItem("jwt");
     window.location.reload();
     window.location.pathname = "/";
-  }
+  };
 
   return (
     <AppBar
@@ -38,85 +38,84 @@ const Navbar = ({ authState }: Props) => {
       >
         Pabrik Dorayaki
       </p>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-        }}
-      >
-
-          {/* Test */}
-        {/* <p
-          style={{
-            textAlign: "right",
-            color: "white",
-            fontSize: 24,
-            marginLeft: 20,
-          }}
-        >
-          <Link
-            to="/dorayaki"
-            style={{
-              textDecoration: "none",
-            }}
-          >
-            Dorayaki
-          </Link>
-        </p>
-        <p
-          style={{
-            textAlign: "right",
-            color: "white",
-            fontSize: 24,
-            marginLeft: 20,
-          }}
-        >
-          <Link
-            to="/dorayaki"
-            style={{
-              textDecoration: "none",
-            }}
-          >
-            Request
-          </Link>
-        </p> */
-        <p
-          style={{
-            textAlign: "right",
-            color: "white",
-            fontSize: 24,
-            marginLeft: 20,
-          }}
-        >
-          <Link
-            to="/bahan"
-            style={{
-              textDecoration: "none",
-            }}
-          >
-            Bahan Baku
-          </Link>
-        </p>}
+      {authState.isLoggedIn && (
         <div
           style={{
-            textAlign: "right",
+            display: "flex",
+            flexDirection: "row",
           }}
         >
-          {authState.isLoggedIn && (
-          <Button
-            variant="contained"
-            color="success"
-            sx={{
-              mt: 3,
-              ml: 3,
+          <p
+            style={{
+              textAlign: "right",
               color: "white",
+              fontSize: 24,
+              marginLeft: 20,
             }}
-            onClick={(e) => logout()}
           >
-            Logout
-          </Button>)}
+            <Link
+              to="/dorayaki"
+              style={{
+                textDecoration: "none",
+              }}
+            >
+              Dorayaki
+            </Link>
+          </p>
+          <p
+            style={{
+              textAlign: "right",
+              color: "white",
+              fontSize: 24,
+              marginLeft: 20,
+            }}
+          >
+            <Link
+              to="/dorayaki"
+              style={{
+                textDecoration: "none",
+              }}
+            >
+              Request
+            </Link>
+          </p>
+          <p
+            style={{
+              textAlign: "right",
+              color: "white",
+              fontSize: 24,
+              marginLeft: 20,
+            }}
+          >
+            <Link
+              to="/bahan"
+              style={{
+                textDecoration: "none",
+              }}
+            >
+              Bahan Baku
+            </Link>
+          </p>
+          <div
+            style={{
+              textAlign: "right",
+            }}
+          >
+            <Button
+              variant="contained"
+              color="success"
+              sx={{
+                mt: 3,
+                ml: 3,
+                color: "white",
+              }}
+              onClick={(e) => logout()}
+            >
+              Logout
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
     </AppBar>
   );
 };
