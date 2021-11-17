@@ -17,7 +17,7 @@ function App() {
           const { isLoggedIn } = authState;
           return !isLoggedIn ? (
             <div className="App">
-              <Navbar isLoggedIn={false} />
+              <Navbar />
               <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="*" element={<Login />} />
@@ -25,7 +25,7 @@ function App() {
             </div>
           ) : (
             <div className="App">
-              <Navbar isLoggedIn={true} />
+              <Navbar />
               <Routes>
                 <Route path="/dorayaki" element={<ReadRecipe />} />
                 <Route path="/bahan" element={<ReadBahan />} />

@@ -1,7 +1,7 @@
-import { Box, Typography, Button } from "@mui/material";
+import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const Navbar = (isLoggedIn: any) => {
+const Navbar = () => {
   return (
     <div
       style={{
@@ -17,6 +17,7 @@ const Navbar = (isLoggedIn: any) => {
           fontSize: 48,
           textAlign: "left",
           margin: 0,
+          marginTop: 2,
           color: "white",
           flex: 0.97,
           marginLeft: 20,
@@ -24,79 +25,94 @@ const Navbar = (isLoggedIn: any) => {
       >
         Pabrik Dorayaki
       </p>
-      {isLoggedIn && (
-        <div
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+        }}
+      >
+
+          {/* Test */}
+        {/* <p
           style={{
-            display: "flex",
-            flexDirection: "row",
+            textAlign: "right",
+            color: "white",
+            fontSize: 24,
+            marginLeft: 20,
           }}
         >
-          <p
+          <Link
+            to="/dorayaki"
             style={{
-              textAlign: "right",
+              textDecoration: "none",
+            }}
+          >
+            Dorayaki
+          </Link>
+        </p>
+        <p
+          style={{
+            textAlign: "right",
+            color: "white",
+            fontSize: 24,
+            marginLeft: 20,
+          }}
+        >
+          <Link
+            to="/dorayaki"
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            Request
+          </Link>
+        </p> */
+        <p
+          style={{
+            textAlign: "right",
+            color: "white",
+            fontSize: 24,
+            marginLeft: 20,
+          }}
+        >
+          <Link
+            to="/bahan"
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            Bahan Baku
+          </Link>
+        </p> }
+        <p
+          style={{
+            textAlign: "right",
+            color: "white",
+            fontSize: 24,
+            marginLeft: 20,
+          }}
+        >
+          Admin
+        </p>
+        <div
+          style={{
+            textAlign: "right",
+          }}
+        >
+          <Button
+            variant="contained"
+            color="success"
+            sx={{
+              mt: 3,
+              ml: 3,
               color: "white",
-              fontSize: 24,
-              marginLeft: 20,
             }}
+            onClick={(e) => window.location.reload()}
           >
-            <Link to="/dorayaki" style={{
-                textDecoration: 'none'
-            }}>Dorayaki</Link>
-          </p>
-          <p
-            style={{
-              textAlign: "right",
-              color: "white",
-              fontSize: 24,
-              marginLeft: 20,
-            }}
-          >
-            <Link to="/dorayaki" style={{
-                textDecoration: 'none'
-            }}>Request</Link>
-          </p>
-          <p
-            style={{
-              textAlign: "right",
-              color: "white",
-              fontSize: 24,
-              marginLeft: 20,
-            }}
-          >
-            <Link to="/bahan" style={{
-                textDecoration: 'none'
-            }}>Bahan Baku</Link>
-          </p>
-          <p
-            style={{
-              textAlign: "right",
-              color: "white",
-              fontSize: 24,
-              marginLeft: 20,
-            }}
-          >
-            Admin
-          </p>
-          <div
-            style={{
-              textAlign: "right",
-            }}
-          >
-            <Button
-              variant="contained"
-              color="success"
-              sx={{
-                mt: 3,
-                ml: 3,
-                color: "white",
-              }}
-              onClick={(e) => window.location.reload()}
-            >
-              Logout
-            </Button>
-          </div>
+            Logout
+          </Button>
         </div>
-      )}
+      </div>
     </div>
   );
 };
