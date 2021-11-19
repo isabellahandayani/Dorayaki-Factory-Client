@@ -7,9 +7,10 @@ import RecipeServices from "Service/RecipeServices";
 
 interface Props {
   request: Request;
+  commonFunction: () => void;
 }
 
-const CardRequest: React.FC<Props> = ({ request }) => {
+const CardRequest: React.FC<Props> = ({ request, commonFunction }) => {
   const context = useAuthContext();
 
   const [dorayakiName, setDorayakiName] = useState<string>("");
@@ -24,9 +25,10 @@ const CardRequest: React.FC<Props> = ({ request }) => {
     try {
       await validateRequest(
         context.authState.jwt ?? "",
-        request.id_dorayaki,
+        request.id,
         is_valid
       );
+      commonFunction();
     } catch (err) {
       console.log(err);
     }
@@ -73,8 +75,8 @@ const CardRequest: React.FC<Props> = ({ request }) => {
           <Button
             sx={{
               color: "green",
-              padding: 2,
-              fontSize: 24,
+              padding: 1,
+              fontSize: 20,
               borderRadius: 2,
               marginRight: 8,
             }}
@@ -85,7 +87,7 @@ const CardRequest: React.FC<Props> = ({ request }) => {
             Accept
           </Button>
           <Button
-            sx={{ color: "red", padding: 2, fontSize: 24, borderRadius: 2 }}
+            sx={{ color: "red", padding: 1, fontSize: 20, borderRadius: 2 }}
             variant="contained"
             color="info"
             onClick={() => handleValidateRequest(false)}
