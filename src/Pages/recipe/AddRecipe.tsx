@@ -36,7 +36,7 @@ const AddRecipe = () => {
         context.authState.jwt
       );
       let data = await (
-        await RecipeServices.getAll(context.authState.jwt)
+        await RecipeServices.getAll()
       ).data.data;
       let bahanData = await (
         await BahanServices.getAll(context.authState.jwt)

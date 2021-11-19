@@ -3,18 +3,13 @@ import http from "../http-common";
 const get = (id: any, jwt: any) => {
   return http.get(`/dorayaki/${id}`, {
     headers: {
-        Authorization: `Bearer ${jwt}`,
+      Authorization: `Bearer ${jwt}`,
     },
   });
 };
 
-const getAll = (jwt: any) => {
-    console.log(jwt)
-  return http.get(`/dorayaki`, {
-    headers: {
-      Authorization: `Bearer ${jwt}`,
-    },
-  });
+const getAll = () => {
+  return http.get(`/dorayaki`);
 };
 
 const createDorayaki = (data: any, jwt: any) => {

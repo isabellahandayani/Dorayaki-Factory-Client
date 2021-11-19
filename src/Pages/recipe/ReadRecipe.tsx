@@ -2,13 +2,11 @@ import React from "react";
 import { useEffect, useState } from "react";
 import RecipeServices from "../../Service/RecipeServices";
 import CardResep from "../../Components/CardResep";
-import { useAuthContext } from "Context/Auth";
 import { useNavigate } from "react-router-dom";
 import { Button, Box } from "@mui/material";
 
 const ReadRecipe = () => {
   const [recipe, setRecipe] = useState<any[]>([]);
-  const context = useAuthContext();
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -20,7 +18,7 @@ const ReadRecipe = () => {
   };
 
   const initialize = () => {
-    RecipeServices.getAll(context.authState.jwt)
+    RecipeServices.getAll()
       .then((response) => {
         setRecipe(response.data.data);
       })
