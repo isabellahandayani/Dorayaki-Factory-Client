@@ -71,7 +71,7 @@ const Navbar = ({ authState }: Props) => {
             }}
           >
             <Link
-              to="/dorayaki"
+              to="/request"
               style={{
                 textDecoration: "none",
               }}
