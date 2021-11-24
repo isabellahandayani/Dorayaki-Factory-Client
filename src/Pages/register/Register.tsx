@@ -55,7 +55,7 @@ function Register() {
 
   return (
     <InputContainer title="Register">
-      <Grid item md={8} sx={{ mt: '30px' }}>
+      <Grid item md={10} sx={{ mt: '30px' }}>
         <TextField 
           label="Email"
           fullWidth
@@ -67,7 +67,7 @@ function Register() {
           helperText={emailError ? "Email tidak valid" : ""}
         />
       </Grid>
-      <Grid item md={8} sx={{ mt: '50px' }}>
+      <Grid item md={10} sx={{ mt: '50px' }}>
         <TextField 
           label="Username"
           fullWidth
@@ -78,7 +78,7 @@ function Register() {
           sx={{ input: {color: "#FFFFFF"} }}
         />
       </Grid>
-      <Grid item md={8} sx={{ mt: '50px' }}>
+      <Grid item md={10} sx={{ mt: '50px' }}>
         <TextField 
           label="Password"
           type={show ? "text" : "password"}
@@ -102,7 +102,7 @@ function Register() {
           sx={{ input: {color: "#FFFFFF"} }}
         />
       </Grid>
-      <Grid container item md={8} sx={{ mt: '30px', mb: '10px', justifyContent: 'space-between' }}>
+      <Grid container item md={10} sx={{ mt: '30px', mb: '10px', justifyContent: 'space-between' }}>
         <Button variant="text" color="secondary" size="small" sx={{ textTransform: 'none' }} onClick={() => navigate("/login", {replace: true})} >
           Login existing account
         </Button>

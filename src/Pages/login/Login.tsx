@@ -52,7 +52,7 @@ function Login() {
 
   return (
     <InputContainer title="Login">
-      <Grid item md={8} sx={{ mt: '30px' }}>
+      <Grid item md={10} sx={{ mt: '30px' }}>
         <TextField
           required
           error={emailError || error} 
@@ -61,11 +61,11 @@ function Login() {
           color="secondary"
           value={email}
           onChange={handleEmailChange}
-          sx={{ input: {color: "black"} }}
+          sx={{ input: {color: "black", typography: "body1"} }}
           helperText={emailError ? "Email tidak valid" : ""}
         />
       </Grid>
-      <Grid item md={8} sx={{ mt: '50px' }}>
+      <Grid item md={10} sx={{ mt: '50px' }}>
         <TextField
           required
           error={error}
@@ -90,10 +90,10 @@ function Login() {
           sx={{ input: {color: "black"} }}
         />
       </Grid>
-      {error && <Grid container item md={8} sx={{ justifyContent: 'end' }}>
+      {error && <Grid container item md={10} sx={{ justifyContent: 'end' }}>
         <Typography variant="body1" color="error">Admin not found!</Typography>
       </Grid>}
-      <Grid container item md={8} sx={{ mt: '30px', mb: '10px', justifyContent: 'space-between' }}>
+      <Grid container item md={10} sx={{ mt: '30px', mb: '10px', justifyContent: 'space-between' }}>
         <Button variant="text" color="secondary" size="small" sx={{ textTransform: 'none' }} onClick={() => navigate("/register", {replace: true})} >
           Register new account
         </Button>
