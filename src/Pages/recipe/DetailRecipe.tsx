@@ -7,16 +7,15 @@ import { useAuthContext } from "Context/Auth";
 
 const DetailRecipe = () => {
   const { id } = useParams();
-  const [dorayaki, setDorayaki] = useState<any>([]);
   const context = useAuthContext();
+  const [dorayaki, setDorayaki] = useState<any>([]);
 
   
   useEffect(() => {
-    const getDorayaki = () => {
+    const getDorayaki = async () => {
       RecipeServices.get(id, context.authState.jwt)
         .then((response) => {
           setDorayaki(response.data.data);
-          console.log(dorayaki);
         })
         .catch((e) => {
           console.log(e);
@@ -24,7 +23,7 @@ const DetailRecipe = () => {
     };
 
     getDorayaki();
-  }, [context, id, dorayaki]);
+  }, [id, context.authState.jwt]);
 
   return (
     <>
