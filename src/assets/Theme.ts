@@ -20,7 +20,7 @@ const theme = createTheme({
     }
   },
   typography: {
-    fontFamily: '"Josefin Sans", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: 'Comfortaa, "Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
       fontSize: '144px',
       lineHeight: '1',
