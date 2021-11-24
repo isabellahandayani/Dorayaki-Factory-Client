@@ -1,4 +1,4 @@
-import http from "../http-common";
+import http from "http-common";
 
 const get = (id: any, jwt: any) => {
   return http.get(`/dorayaki/${id}`, {
@@ -28,9 +28,12 @@ const createRecipe = (data: any, jwt: any) => {
   });
 };
 
-export default {
+const ex = {
   get,
   getAll,
   createDorayaki,
   createRecipe,
 };
+
+export default ex;
+

@@ -10,20 +10,21 @@ const DetailRecipe = () => {
   const [dorayaki, setDorayaki] = useState<any>([]);
   const context = useAuthContext();
 
-  const getDorayaki = () => {
-    RecipeServices.get(id, context.authState.jwt)
-      .then((response) => {
-        setDorayaki(response.data.data);
-        console.log(dorayaki);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-  };
-
+  
   useEffect(() => {
+    const getDorayaki = () => {
+      RecipeServices.get(id, context.authState.jwt)
+        .then((response) => {
+          setDorayaki(response.data.data);
+          console.log(dorayaki);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    };
+
     getDorayaki();
-  }, []);
+  }, [context, id, dorayaki]);
 
   return (
     <>

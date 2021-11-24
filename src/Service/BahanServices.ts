@@ -1,4 +1,4 @@
-import http from "../http-common";
+import http from "http-common";
 
 const get = (id: any, jwt: any) => {
   return http.get(`/bahan/${id}`, {
