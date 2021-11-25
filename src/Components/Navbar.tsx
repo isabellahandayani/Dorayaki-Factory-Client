@@ -1,5 +1,5 @@
 import { Button, AppBar } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 interface Props {
   authState: {
@@ -15,19 +15,23 @@ const Navbar = ({ authState }: Props) => {
     window.location.pathname = "/";
   };
 
+  const location = useLocation();
+
   return (
     <AppBar
-      style={{
+      sx={{
         backgroundColor: "#01A8D9",
         margin: 0,
-        padding: 6,
+        px: 1,
         display: "flex",
         flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
       }}
     >
       <p
         style={{
-          fontSize: 48,
+          fontSize: 36,
           textAlign: "left",
           margin: 0,
           marginTop: 2,
@@ -42,60 +46,39 @@ const Navbar = ({ authState }: Props) => {
         <div
           style={{
             display: "flex",
+            width: "50%",
             flexDirection: "row",
+            justifyContent: "space-evenly",
+            alignItems: "center",
           }}
         >
-          <p
+          <Link
+            to="/dorayaki"
             style={{
-              textAlign: "right",
-              color: "white",
-              fontSize: 24,
-              marginLeft: 20,
+              color: location.pathname === "/dorayaki" ? "#013cd9" : "#FFFFFF",
+              textDecoration: "none",
             }}
           >
-            <Link
-              to="/dorayaki"
-              style={{
-                textDecoration: "none",
-              }}
-            >
-              Dorayaki
-            </Link>
-          </p>
-          <p
+            Dorayaki
+          </Link>
+          <Link
+            to="/request"
             style={{
-              textAlign: "right",
-              color: "white",
-              fontSize: 24,
-              marginLeft: 20,
+              color: location.pathname === "/request" ? "#013cd9" : "#FFFFFF",
+              textDecoration: "none",
             }}
           >
-            <Link
-              to="/request"
-              style={{
-                textDecoration: "none",
-              }}
-            >
-              Request
-            </Link>
-          </p>
-          <p
+            Request
+          </Link>
+          <Link
+            to="/bahan"
             style={{
-              textAlign: "right",
-              color: "white",
-              fontSize: 24,
-              marginLeft: 20,
+              color: location.pathname === "/bahan" ? "#013cd9" : "#FFFFFF",
+              textDecoration: "none",
             }}
           >
-            <Link
-              to="/bahan"
-              style={{
-                textDecoration: "none",
-              }}
-            >
-              Bahan Baku
-            </Link>
-          </p>
+            Bahan Baku
+          </Link>
           <div
             style={{
               textAlign: "right",
@@ -105,8 +88,6 @@ const Navbar = ({ authState }: Props) => {
               variant="contained"
               color="success"
               sx={{
-                mt: 3,
-                ml: 3,
                 color: "white",
               }}
               onClick={(e) => logout()}
