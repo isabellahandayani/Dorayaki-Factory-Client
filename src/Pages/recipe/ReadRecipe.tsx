@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import RecipeServices from "../../Service/RecipeServices";
 import CardResep from "../../Components/CardResep";
 import { useNavigate } from "react-router-dom";
-import { Button, Box } from "@mui/material";
+import { Button, Box, Typography } from "@mui/material";
 
 const ReadRecipe = () => {
   const [recipe, setRecipe] = useState<any[]>([]);
@@ -45,6 +45,10 @@ const ReadRecipe = () => {
             </React.Fragment>
           );
         })}
+
+		{
+			recipe.length === 0 && <Typography variant="body1" color="error">Belum ada Resep Terdaftar!</Typography>
+		}
       <Box textAlign="center">
         <Button
           variant="contained"

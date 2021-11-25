@@ -63,7 +63,6 @@ function Register() {
           color="secondary"
           value={email}
           onChange={handleEmailChange}
-          sx={{ input: {color: "#FFFFFF"} }}
           helperText={emailError ? "Email tidak valid" : ""}
         />
       </Grid>
@@ -75,7 +74,6 @@ function Register() {
           color="secondary"
           value={username}
           onChange={handleUsernameChange}
-          sx={{ input: {color: "#FFFFFF"} }}
         />
       </Grid>
       <Grid item md={10} sx={{ mt: '50px' }}>
@@ -99,7 +97,6 @@ function Register() {
               </InputAdornment>
             ),
           }}
-          sx={{ input: {color: "#FFFFFF"} }}
         />
       </Grid>
       <Grid container item md={10} sx={{ mt: '30px', mb: '10px', justifyContent: 'space-between' }}>

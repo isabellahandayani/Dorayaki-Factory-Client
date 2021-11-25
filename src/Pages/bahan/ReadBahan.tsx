@@ -4,7 +4,7 @@ import BahanService from "../../Service/BahanServices";
 import CardBahan from "../../Components/CardBahan";
 import FormBahan from "../../Components/FormBahan";
 
-import { Button, Box, Modal } from "@mui/material";
+import { Button, Box, Modal, Typography } from "@mui/material";
 import BahanServices from "../../Service/BahanServices";
 import { useAuthContext } from "Context/Auth";
 import { useNavigate } from "react-router-dom";
@@ -33,10 +33,10 @@ const ReadBahan = () => {
       stok: stok,
     };
 
-    if(nama_bahan && satuan && stok){
+    if (nama_bahan && satuan && stok) {
       update(data);
+	  window.location.reload();
     }
-    navigate("/bahan", { replace: true });
     handleClose();
   };
 
@@ -59,7 +59,7 @@ const ReadBahan = () => {
     BahanService.getAll(context.authState.jwt)
       .then((response) => {
         setBahan(response.data.data);
-        console.log(response.data.data)
+        console.log(response.data.data);
       })
       .catch((e) => {
         console.log(e);
@@ -68,11 +68,11 @@ const ReadBahan = () => {
 
   return (
     <>
-      <Box sx={{
-        mt:15
-      }}>
-
-      </Box>
+      <Box
+        sx={{
+          mt: 15,
+        }}
+      ></Box>
       {bahan &&
         bahan.map((item) => {
           return (
@@ -88,12 +88,18 @@ const ReadBahan = () => {
           );
         })}
 
+      {bahan.length === 0 && (
+        <Typography variant="body1" color="error">
+          Belom Ada Bahan Terdaftar!
+        </Typography>
+      )}
+
       <Box textAlign="center">
         <Button
           variant="contained"
           color="success"
           sx={{
-            width: "95%",
+            width: "90%",
             mb: 4,
             height: 50,
             fontSize: 28,

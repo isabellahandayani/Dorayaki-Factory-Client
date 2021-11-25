@@ -208,11 +208,11 @@ const AddRecipe = () => {
             <Button
               sx={{
                 color: "white",
-                width: 150,
+                width: 216,
                 fontSize: 24,
                 borderRadius: 2,
                 display: "inline",
-                ml: 10,
+                ml: 2,
               }}
               variant="contained"
               color="info"

@@ -14,10 +14,10 @@ const AddBahan = () => {
       stok: stok,
     };
 
-    if(nama_bahan && satuan && stok) {
+    if (nama_bahan && satuan && stok) {
       create(data);
+      navigate("/bahan", { replace: true });
     }
-    navigate("/bahan", { replace: true });
   };
 
   const create = (data: any) => {
@@ -32,9 +32,7 @@ const AddBahan = () => {
 
   return (
     <>
-      <FormBahan
-        handleSubmit={handleSubmit}
-      />
+      <FormBahan handleSubmit={handleSubmit} />
     </>
   );
 };

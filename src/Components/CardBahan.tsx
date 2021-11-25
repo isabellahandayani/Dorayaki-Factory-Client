@@ -12,7 +12,7 @@ const CardBahan: React.FC<Props> = ({ onClick, props }) => {
       bgcolor="secondary.main"
       sx={{
         borderRadius: 5,
-        maxWidth: "95%",
+        maxWidth: "90%",
         mx: "auto",
         display: "flex",
         flexDirection: "row",
