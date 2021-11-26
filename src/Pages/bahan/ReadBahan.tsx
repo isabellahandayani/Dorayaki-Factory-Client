@@ -21,11 +21,7 @@ const ReadBahan = () => {
     setIsOpen(true);
   };
 
-  const handleClose = () => {
-    setIsOpen(false);
-  };
-
-  const handleSubmit = (nama_bahan: string, satuan: string, stok: number) => {
+  const handleSubmit = async (nama_bahan: string, satuan: string, stok: number) => {
     const data = {
       id: id,
       nama_bahan: nama_bahan,
@@ -33,14 +29,16 @@ const ReadBahan = () => {
       stok: stok,
     };
 
-    if (nama_bahan && satuan && stok && bahan.filter(e => e.nama_bahan === nama_bahan).length === 0) {
-      update(data);
-    }
-    handleClose();
+    let selected = bahan.filter(e => e.nama_bahan === nama_bahan);
+    if (nama_bahan && satuan && stok && (selected.length === 0 || selected[0].id === id ) ) {
+      await update(data);
+    } 
+    setIsOpen(false);
+    window.location.reload();
   };
 
-  const update = (data: any) => {
-    BahanServices.update(data, context.authState.jwt)
+  const update = async (data: any) => {
+    await BahanServices.update(data, context.authState.jwt)
       .then((response) => {
         console.log(response);
       })
@@ -119,7 +117,7 @@ const ReadBahan = () => {
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
             open={isOpen}
-            onClose={handleClose}
+            onClose={() => setIsOpen(false)}
           >
             <FormBahan handleSubmit={handleSubmit} />
           </Modal>

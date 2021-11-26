@@ -21,7 +21,7 @@ Frontend dari dorayaki factory. Admin pabrik dapat menerima dan menolak *request
 ![image](https://user-images.githubusercontent.com/63598464/144099369-d98072dc-475a-4893-a6ab-2c47c6a60b5e.png)
 
 4. Halaman Request
-![image](https://user-images.githubusercontent.com/63598464/144099461-f96b8609-a712-4cd3-9f01-28c2c845bfc9.png)
+![image](https://user-images.githubusercontent.com/63598464/144257016-b5dcda33-025c-4e63-8437-233faea5dc09.png)
 
 5. Halaman Bahan Baku
 ![image](https://user-images.githubusercontent.com/63598464/144099551-8d73674c-b107-481f-aa35-524e9ddbc430.png)
@@ -30,6 +30,7 @@ Frontend dari dorayaki factory. Admin pabrik dapat menerima dan menolak *request
 
 NodeJS
 - Login: 13519144
+- Register: 13519144
 - Recipe: 13519081
 - Bahan Baku: 13519081
 - Request: 13519114
