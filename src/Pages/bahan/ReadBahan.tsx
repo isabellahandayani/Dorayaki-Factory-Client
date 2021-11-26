@@ -33,9 +33,8 @@ const ReadBahan = () => {
       stok: stok,
     };
 
-    if (nama_bahan && satuan && stok) {
+    if (nama_bahan && satuan && stok && bahan.filter(e => e.nama_bahan === nama_bahan).length === 0) {
       update(data);
-	  window.location.reload();
     }
     handleClose();
   };
